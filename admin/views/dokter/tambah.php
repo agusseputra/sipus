@@ -1,11 +1,12 @@
 <h4>Tambah Data</h4>
 <hr>
-<form action="index.php?mod=dokter&page=save" method="POST">
+<form action="index.php?mod=dokter&page=save" method="POST" enctype="multipart/form-data">
     <div class="col-md-6">
         <div class="form-group">
             <label for="">Nama Dokter</label>
             <input type="text" name="nama_dokter" required value="<?=(isset($_POST['nama_dokter']))?$_POST['nama_dokter']:'';?>" class="form-control">
             <input type="hidden" name="id_dokter"  value="<?=(isset($_POST['id_dokter']))?$_POST['id_dokter']:'';?>" class="form-control">
+            <input type="hidden" name="photo_old"  value="<?=(isset($_POST['photo']))?$_POST['photo']:'';?>" >
             <span class="text-danger"><?=(isset($err['nama_dokter']))?$err['nama_dokter']:'';?></span>
         </div>
         <div class="form-group">
@@ -43,6 +44,12 @@
                 }?>
             </select>
             <span class="text-danger"><?=(isset($err['id_spesialisasi']))?$err['id_spesialisasi']:'';?></span>
+    </div>
+    <div class="form-group">
+    <label for="">Photo</label>
+    <img src="../media/<?=$_POST['photo']?>" width="100">
+    <input type="file" name="fileToUpload" class="form-control">
+    <span class="text-danger"><?=(isset($err['fileToUpload']))?$err['fileToUpload']:'';?></span>
     </div>
     <div class="form-group">
             <button type="submit" class="btn btn-primary">Save</button>
